@@ -1,7 +1,7 @@
-Barebones HPC Neovim
+# Barebones HPC Neovim
 A clean, modular Neovim configuration. It has all the nice vim stuff you're probably used to and looks clean.
 
-# Installation Instructions:
+## Installation Instructions:
 ```
 # Create the local bin directory if it doesn't exist
 mkdir -p ~/.local/bin
@@ -19,8 +19,10 @@ export PATH="${PATH}:${HOME}/.local/bin"
 
 # Clone this repo to your ~/.config/nvim directory:
 git clone git@github.com:jacobsesate/nvim-hpc.git ~/.config/nvim
-    Layout
-Plaintext
+```
+
+Layout:
+```
 ~/.config/nvim
 ├── init.lua                # Entry point (loads Lazy.nvim and /lua modules)
 ├── lua/
@@ -32,7 +34,7 @@ Plaintext
 └── README.md
 ```
 
-# Usage Tips
+## Usage Tips
 I would recommend looking at the options.lua and keymaps.lua files. You can also add plugins if you want, but I've found them annoying to get working on Gemini. This is honestly enough to get started.
 
 The rest of my .bashrc is also pretty useful. The first line enables vim keybinds in the terminal. I would definitely consider adding "fasd" to your ~/.local/bin as well. It's a really neat autobookmarking system that lets you jump to any folder you've previously been to instantly (no tedious cd chains).
