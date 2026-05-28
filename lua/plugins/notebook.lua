@@ -6,11 +6,7 @@ return {
       backend = "kitty",
       processor = "magick_cli",
       balanced_margin = false,
-
-      -- max_width = 100,
-      -- max_height = 12,
-      -- max_height_window_percentage = 50,
-      -- max_width_window_percentage = 50,
+      editor_only_render_when_focused = false,
       window_overlap_clear_enabled = true,
       integrations = {
           markdown = {
@@ -23,8 +19,6 @@ return {
       },
           max_height_window_percentage = math.huge,
           max_width_window_percentage = math.huge,
-          -- markdown_image_padding = 10, 
-          -- render_geometry = "x20",
         },
       },
 
@@ -34,20 +28,23 @@ return {
     version = "^1.0.0",
     build = ":UpdateRemotePlugins",
     init = function()
-      -- vim.g.molten_image_provider = "image.nvim"
       vim.g.molten_image_provider = "image.nvim"
-      vim.g.molten_auto_open_output = false
-      vim.g.molten_output_win_max_height = 25
-      vim.g.molten_output_win_max_width = 80
-      vim.g.molten_virt_text_output = true
-      vim.g.molten_use_none_provider = false 
-      vim.g.molten_virt_lines_off_by_1 = false
+      vim.g.molten_auto_open_output = true
+      vim.g.molten_output_win_border = "rounded"
+      vim.g.molten_output_win_max_height = math.huge
+      vim.g.molten_output_win_max_width = math.huge
+      vim.g.molten_output_win_cover_iterline = false
+      vim.g.molten_layout = "split" 
+      vim.g.molten_virt_text_output = false
     end,
     config = function()
       vim.keymap.set("n", "<leader>mi", ":MoltenInit<CR>", { desc = "Initialize Kernel" })
+      vim.keymap.set("n", "<leader>ms", ":MoltenShowOutput<CR>", { desc = "Show output" })
+      vim.keymap.set("n", "<leader>mo", ":noautocmd MoltenEnterOutput<CR>")
+
+      vim.keymap.set("n", "<leader>mh", ":MoltenHideOutput<CR>", { desc = "Hide output" })
+      vim.keymap.set("n", "<leader>mc", ":MoltenDelete<CR>", { desc = "Delete output" })
       vim.keymap.set("n", "<leader>re", ":MoltenEvaluateOperator<CR>", { desc = "Run operator" })
-      vim.keymap.set("n", "<leader>os", ":MoltenShowOutput<CR>", { desc = "Show output" })
-      vim.keymap.set("n", "<leader>oh", ":MoltenHideOutput<CR>", { desc = "Hide output" })
       vim.keymap.set("v", "<leader>re", ":<C-u>MoltenEvaluateVisual<CR>gv", { desc = "Run visual" })
     end,
   },
